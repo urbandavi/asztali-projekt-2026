@@ -8,5 +8,6 @@ namespace asztali_projekt_2026.Model
 {
     internal class Class_Object
     {
+
     }
 }
