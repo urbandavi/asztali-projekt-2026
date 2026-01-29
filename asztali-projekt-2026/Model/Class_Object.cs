@@ -17,11 +17,6 @@ namespace asztali_projekt_2026.Model
         private int _age;
 
 
-        public Class_Object()
-        {
-
-        }
-
         public int Id { get => _id; set => _id = value; }
         public string Firstname { get => _firstname; set => _firstname = value; }
         public string Lastname { get => _lastname; set => _lastname = value; }
@@ -29,6 +24,12 @@ namespace asztali_projekt_2026.Model
         public int Goals { get => _goals; set => _goals = value; }
         public int Wins { get => _wins; set => _wins = value; }
         public int Age { get => _age; set => _age = value; }
+
+        public Class_Object()
+        {
+
+        }
+
 
         public Class_Object(int id, string firstname, string lastname, int matches, int goals, int wins, int age)
         {
@@ -40,6 +41,11 @@ namespace asztali_projekt_2026.Model
             Wins = wins;
             Age = age;
         }
+        
 
+        public override string ToString()
+        {
+            return $"Név: {Firstname} {Lastname} Meccsek: {Matches} Gólok: {Goals} Győzelmek: {Wins} Kor: {Age}";
+        }
     }
 }
