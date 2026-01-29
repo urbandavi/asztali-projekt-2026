@@ -13,6 +13,47 @@ internal class Program
         SelectFromTable("focistak", connectionString);
         Dbcheck(connectionString);
         AdatBetoltes(adatok);
+
+
+        //funkciók
+        osszesJatekosKilistazasa(focistak);
+        jatekosSpecifikusSzures(focistak);
+        kinekVanTooobbGolja(focistak);
+        megadottSzazalekMegnyerve(focistak);
+        golokAtlagaMeccsekreLebontva(focistak);
+        oregek(focistak);
+
+
+    }
+
+    private static void oregek(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void golokAtlagaMeccsekreLebontva(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void megadottSzazalekMegnyerve(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void kinekVanTooobbGolja(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void osszesJatekosKilistazasa(List<Class_Object> focistak)
+    {
+        throw new NotImplementedException();
     }
 
     private static void Dbcheck(string connectionString)
