@@ -36,8 +36,8 @@ internal class Program
             Class_Object focisok = new Class_Object();
 
             focisok.Id = f.Field<int>("id");
-            focisok.Firstname = f.Field<string>("firstname");
-            focisok.Lastname = f.Field<string>("lastname");
+            focisok.Firstname = f.Field<string>("first_name");
+            focisok.Lastname = f.Field<string>("last_name");
             focisok.Matches = f.Field<int>("matches");
             focisok.Goals = f.Field<int>("goals");
             focisok.Wins = f.Field<int>("wins");
