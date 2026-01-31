@@ -17,12 +17,19 @@ internal class Program
       
 
         //funkciók
+
+        //folyamatban
+
         osszesJatekosKilistazasa(focistak);
         jatekosSpecifikusSzures(focistak);
         kinekVanTooobbGolja(focistak);
         megadottSzazalekMegnyerve(focistak);
         golokAtlagaMeccsekreLebontva(focistak);
-        oregek(focistak);
+
+
+        //kész
+        //oregek(focistak);
+
 
         //test commit
     }
@@ -81,6 +88,39 @@ internal class Program
 
     private static void golokAtlagaMeccsekreLebontva(List<Class_Object> focistak)
     {
+
+
+        List<double> atlaglista = new List<double>();
+        atlaglistaFeltoltes(focistak, ref atlaglista);
+        Console.WriteLine("Adj meg egy átlagot. Ez az átlag lessz a lekérdezés minimuma.");
+        double felhasznaloAtlag = Convert.ToDouble( Console.ReadLine());
+        foreach (var a in atlaglista)
+        {
+            if (a>felhasznaloAtlag)
+            {
+                Console.WriteLine(focistak[atlaglista.IndexOf(a)].ToString());
+                Console.WriteLine(a);
+            }
+            
+        }
+
+        
+
+
+
+
+
+
+    }
+
+    private static void atlaglistaFeltoltes(List<Class_Object> focistak, ref List<double> atlaglista)
+    {
+        foreach (var f in focistak)
+        {
+            double golatlag = f.Goals / f.Matches;
+            atlaglista.Add(golatlag);
+        }
+
     }
 
     private static void megadottSzazalekMegnyerve(List<Class_Object> focistak)
