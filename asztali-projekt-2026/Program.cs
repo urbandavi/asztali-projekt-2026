@@ -1,5 +1,6 @@
 ﻿using asztali_projekt_2026.Model;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 
 internal class Program
@@ -10,10 +11,10 @@ internal class Program
     public static List<Class_Object> focistak = new List<Class_Object>();
     private static void Main(string[] args)
     {
-        SelectFromTable("focistak", connectionString);
         Dbcheck(connectionString);
+        SelectFromTable("focistak", connectionString);
         AdatBetoltes(adatok);
-
+      
 
         //funkciók
         osszesJatekosKilistazasa(focistak);
@@ -28,32 +29,74 @@ internal class Program
 
     private static void oregek(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
+        //egy bizonyos kor felettieket vagy alattiakat kiadja a program
+
+
+
+
+
+        Console.WriteLine("Adj meg egy kort 16 és 40 között:");
+        
+        int age = Convert.ToInt32(Console.ReadLine());
+
+        if (age>40 || age<16)
+        {
+            Console.WriteLine($"Az {age} szám nem tartozik bele a megadható intervallumba.");
+        }
+        else
+        {
+            Console.WriteLine($"A(z) {age} éves vagy az alatti kórú, vagy {age} korú és feletti játékosokat szeretnéd lekérdezni? Ha felette írj F betüt ha alatta írj A betüt!");
+            string valasz = Console.ReadLine();
+
+            
+            foreach (var focisok in focistak)
+            {
+                if (valasz.ToLower()=="f")
+                {
+                    if (focisok.Age >= age)
+                    {
+                        Console.WriteLine(focisok.ToString());
+                    }
+                }
+                else
+                {
+                    if (focisok.Age <= age)
+                    {
+                        Console.WriteLine(focisok.ToString());
+                    }
+                }
+            }
+
+
+
+
+          
+        }
+        
+        
+        
+
+
     }
 
     private static void golokAtlagaMeccsekreLebontva(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
     }
 
     private static void megadottSzazalekMegnyerve(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
     }
 
     private static void kinekVanTooobbGolja(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
     }
 
     private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
     }
 
     private static void osszesJatekosKilistazasa(List<Class_Object> focistak)
     {
-        throw new NotImplementedException();
     }
 
     private static void Dbcheck(string connectionString)
