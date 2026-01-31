@@ -23,7 +23,7 @@ internal class Program
         golokAtlagaMeccsekreLebontva(focistak);
         oregek(focistak);
 
-
+        //test commit
     }
 
     private static void oregek(List<Class_Object> focistak)
