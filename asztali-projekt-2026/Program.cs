@@ -149,6 +149,13 @@ internal class Program
 
     private static void kinekVanTooobbGolja(List<Class_Object> focistak)
     {
+
+        //Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
+        
+
+
+
+
     }
 
     private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
