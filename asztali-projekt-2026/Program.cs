@@ -130,8 +130,9 @@ internal class Program
     private static void kinekVanTooobbGolja(List<Class_Object> focistak)
     {
 
-        //Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
-        
+        Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
+        int megadottGolok = Convert.ToInt32(Console.ReadLine());
+
 
 
 
