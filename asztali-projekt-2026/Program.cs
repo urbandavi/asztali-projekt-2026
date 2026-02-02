@@ -24,11 +24,11 @@ internal class Program
         jatekosSpecifikusSzures(focistak);
         kinekVanTooobbGolja(focistak);
         megadottSzazalekMegnyerve(focistak);
-        golokAtlagaMeccsekreLebontva(focistak);
 
 
         //kész
         //oregek(focistak);
+        //golokAtlagaMeccsekreLebontva(focistak);
 
 
         //test commit
