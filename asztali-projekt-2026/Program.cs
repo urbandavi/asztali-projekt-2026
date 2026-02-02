@@ -140,10 +140,26 @@ internal class Program
 
     private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
     {
+        Console.WriteLine("Add meg a játékos keresztnevét a szűréshez:");
+        string megadottKnev = Console.ReadLine();
+        Console.WriteLine("Add meg a játékos családnevét a szűréshez:");
+        string megadottCSnev = Console.ReadLine();
+
+        foreach (var f in focistak)
+        {
+            if (f.Firstname.ToLower() == megadottKnev.ToLower() && f.Lastname.ToLower() == megadottCSnev.ToLower())
+            {
+                Console.WriteLine(f.ToString());
+            }
+        }
     }
 
     private static void osszesJatekosKilistazasa(List<Class_Object> focistak)
     {
+        foreach (var f in focistak)
+        {
+            Console.WriteLine(f.ToString());
+        }
     }
 
     private static void Dbcheck(string connectionString)
