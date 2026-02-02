@@ -125,6 +125,26 @@ internal class Program
 
     private static void megadottSzazalekMegnyerve(List<Class_Object> focistak)
     {
+        Console.WriteLine("Adj meg egy százalékot (0-100 között):");
+        double szazalek = Convert.ToDouble(Console.ReadLine());
+
+        if (szazalek < 0 || szazalek > 100)
+        {
+            Console.WriteLine("Hibás százalék érték!");
+        }
+        else
+        {
+            foreach (var f in focistak)
+            {
+                double nyeresegSzazalek = (double)f.Wins / f.Matches * 100;
+                if (nyeresegSzazalek >= szazalek)
+                {
+                    Console.WriteLine(f.ToString());
+                }
+            }
+        }
+
+
     }
 
     private static void kinekVanTooobbGolja(List<Class_Object> focistak)
@@ -151,6 +171,10 @@ internal class Program
             if (f.Firstname.ToLower() == megadottKnev.ToLower() && f.Lastname.ToLower() == megadottCSnev.ToLower())
             {
                 Console.WriteLine(f.ToString());
+            }
+            else
+            {
+                Console.WriteLine("A megadott név nem szerepel az adatbázisban");
             }
         }
     }
