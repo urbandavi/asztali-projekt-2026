@@ -24,12 +24,12 @@ internal class Program
 
 
         //kész
-        oregek(focistak);
-        golokAtlagaMeccsekreLebontva(focistak);
-        osszesJatekosKilistazasa(focistak);
-        jatekosSpecifikusSzures(focistak);
+        //oregek(focistak);
+        //golokAtlagaMeccsekreLebontva(focistak);
+        //osszesJatekosKilistazasa(focistak);
+        //jatekosSpecifikusSzures(focistak);
         kinekVanTooobbGolja(focistak);
-        megadottSzazalekMegnyerve(focistak);
+        //megadottSzazalekMegnyerve(focistak);
 
 
         //test commit
@@ -159,12 +159,21 @@ internal class Program
 
         Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
         int megadottGolok = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Hány darab focistát szeretnél kiiratni?");
+        int focistadarab = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0;  i < focistadarab; i++)
+        {
+
+            if (focistak[i].Goals > megadottGolok)
+            {
+                Console.WriteLine($"{focistak[i].Firstname} {focistak[i].Lastname}");
+            }
+        }
+
+
         foreach (var f in focistak)
         {
-            if (f.Goals > megadottGolok)
-            {
-                Console.Write($"{f.Firstname} {f.Lastname}, ");
-            }
         }
 
 
@@ -175,21 +184,26 @@ internal class Program
 
     private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
     {
-        Console.WriteLine("Add meg a játékos keresztnevét a szűréshez:");
-        string megadottKnev = Console.ReadLine();
-        Console.WriteLine("Add meg a játékos családnevét a szűréshez:");
+        bool joanev = false;
+        Console.WriteLine("Add meg a játékos vezetéknevét a szűréshez majd a keresztnevét a szűréshez:");
+        Console.Write("Vezetéknév: ");
         string megadottCSnev = Console.ReadLine();
+        Console.Write("Keresztnév: ");
+        string megadottKnev = Console.ReadLine();
 
         foreach (var f in focistak)
         {
             if (f.Firstname.ToLower() == megadottKnev.ToLower() && f.Lastname.ToLower() == megadottCSnev.ToLower())
             {
+                joanev = true;
                 Console.WriteLine(f.ToString());
             }
-            else
-            {
-                Console.WriteLine("A megadott név nem szerepel az adatbázisban");
-            }
+            
+            
+        }
+        if (joanev == false)
+        {
+            Console.WriteLine("A név Nem szerepel az adatbázisban.");
         }
     }
 
