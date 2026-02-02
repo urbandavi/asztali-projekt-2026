@@ -1,4 +1,5 @@
 ﻿using asztali_projekt_2026.Model;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Runtime.CompilerServices;
 
@@ -14,24 +15,29 @@ internal class Program
         Dbcheck(connectionString);
         SelectFromTable("focistak", connectionString);
         AdatBetoltes(adatok);
-      
+        //MenuCommand();
 
         //funkciók
 
         //folyamatban
 
+
+
+        //kész
+        oregek(focistak);
+        golokAtlagaMeccsekreLebontva(focistak);
         osszesJatekosKilistazasa(focistak);
         jatekosSpecifikusSzures(focistak);
         kinekVanTooobbGolja(focistak);
         megadottSzazalekMegnyerve(focistak);
 
 
-        //kész
-        //oregek(focistak);
-        //golokAtlagaMeccsekreLebontva(focistak);
-
-
         //test commit
+    }
+
+    private static void MenuCommand()
+    {
+
     }
 
     private static void oregek(List<Class_Object> focistak)
@@ -139,7 +145,7 @@ internal class Program
                 double nyeresegSzazalek = (double)f.Wins / f.Matches * 100;
                 if (nyeresegSzazalek >= szazalek)
                 {
-                    Console.WriteLine(f.ToString());
+                    Console.WriteLine($"{f.Firstname} {f.Lastname} Gólok: {f.Goals}");
                 }
             }
         }
@@ -152,6 +158,13 @@ internal class Program
 
         Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
         int megadottGolok = Convert.ToInt32(Console.ReadLine());
+        foreach (var f in focistak)
+        {
+            if (f.Goals > megadottGolok)
+            {
+                Console.Write($"{f.Firstname} {f.Lastname}, ");
+            }
+        }
 
 
 
