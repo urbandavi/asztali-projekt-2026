@@ -37,7 +37,8 @@ internal class Program
 
     private static void MenuCommand()
     {
-
+        Console.WriteLine("Válassz funkciót:");
+        Console.WriteLine("[1] ");
     }
 
     private static void oregek(List<Class_Object> focistak)
