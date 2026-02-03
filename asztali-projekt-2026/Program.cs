@@ -3,18 +3,26 @@ using System.ComponentModel.Design;
 using System.Data;
 using System.Runtime.CompilerServices;
 
-
 internal class Program
 {
-
+    public static FileIO.ReadFromFile reader = new FileIO.ReadFromFile();
     public static readonly string connectionString = "Server=localhost;Database=asztalifocik;User=root;";
     public static DataTable adatok = new DataTable();
     public static List<Class_Object> focistak = new List<Class_Object>();
+    public static List<List<string>> adatokcsv = new List<List<string>>();
     private static void Main(string[] args)
     {
         Dbcheck(connectionString);
         SelectFromTable("focistak", connectionString);
         AdatBetoltes(adatok);
+        Beolvasas(adatokcsv);
+        Feltoltes(adatokcsv);
+
+        foreach (var f in focistak)
+        {
+            Console.WriteLine(f.ToString());
+        }
+
         //MenuCommand();
 
         //funkciók
@@ -39,6 +47,9 @@ internal class Program
 
         //test commit
     }
+
+
+
 
     private static void MenuCommand()
     {
@@ -253,5 +264,37 @@ internal class Program
             focistak.Add(focisok);
 
         }
+
+
+
+    }
+
+
+    private static void Beolvasas(List<List<string>> adatokcsv)
+    {
+        adatokcsv = reader.FileRead("focistak.csv", 7, ';', true);
+    }
+
+    private static void Feltoltes(List<List<string>> adatokcsv)
+    {
+        List<List<string>> focistakLista = adatokcsv;
+        focistak = new List<Class_Object>();
+
+        foreach (var sor in focistakLista)
+        {
+            Class_Object focisok = new Class_Object();
+            focisok.Id = Convert.ToInt32(sor[0]);
+            focisok.Firstname = sor[1];
+            focisok.Lastname = sor[2];
+            focisok.Matches = Convert.ToInt32(sor[3]);
+            focisok.Goals = Convert.ToInt32(sor[4]);
+            focisok.Wins = Convert.ToInt32(sor[5]);
+            focisok.Age = Convert.ToInt32(sor[6]);
+
+            focistak.Add(focisok);
+        }
+
+
+
     }
 }
