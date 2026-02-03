@@ -210,7 +210,7 @@ internal class Program
 
         foreach (var f in focistak)
         {
-            if (f.Firstname.ToLower() == megadottKnev.ToLower() && f.Lastname.ToLower() == megadottCSnev.ToLower())
+            if (f.Firstname.ToLower() == megadottKnev.ToLower().Trim() && f.Lastname.ToLower() == megadottCSnev.ToLower().Trim())
             {
                 joanev = true;
                 Console.WriteLine(f.ToString());
