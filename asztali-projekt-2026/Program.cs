@@ -20,9 +20,11 @@ internal class Program
 
         foreach (var f in focistak)
         {
-            Console.WriteLine(f.ToString());
+            f.ToString();
         }
-
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Figyelem: Üdvözlünk felhasználó! Ez a projekt focisták adatait hivatott tárolni és lekérdezhetővé tenni. A program 6 lekérdezésen fog végig menni. Kezdjük is el:");
+        Console.ForegroundColor= ConsoleColor.White;
         //MenuCommand();
 
         //funkciók
@@ -32,15 +34,15 @@ internal class Program
 
 
         //kész
-        oregek(focistak);
-        Console.WriteLine("-----------------------------------------------------------------");
-        golokAtlagaMeccsekreLebontva(focistak);
-        Console.WriteLine("-----------------------------------------------------------------");
         osszesJatekosKilistazasa(focistak);
         Console.WriteLine("-----------------------------------------------------------------");
         jatekosSpecifikusSzures(focistak);
         Console.WriteLine("-----------------------------------------------------------------");
+        oregek(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
         kinekVanTooobbGolja(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
+        golokAtlagaMeccsekreLebontva(focistak);
         Console.WriteLine("-----------------------------------------------------------------");
         megadottSzazalekMegnyerve(focistak);
 
@@ -75,7 +77,7 @@ internal class Program
         }
         else
         {
-            Console.WriteLine($"A(z) {age} éves vagy az alatti kórú, vagy {age} korú és feletti játékosokat szeretnéd lekérdezni? Ha felette írj F betüt ha alatta írj A betüt!");
+            Console.WriteLine($"Írj A betűt ha legfeljebb {age} éves vagy írj F betűt ha legalább {age} éves focistákra vagy kíváncsi.");
             string valasz = Console.ReadLine();
 
             
@@ -115,15 +117,14 @@ internal class Program
 
         List<double> atlaglista = new List<double>();
         atlaglistaFeltoltes(focistak, ref atlaglista);
-        Console.WriteLine("A program most kiszortírozza a focistákat a goljaik és meccsik átlaga alapján.");
-        Console.WriteLine("Adj meg egy átlagot. Ez az átlag lessz a lekérdezés minimuma. Ez alatti átlagú játékosok nem lesznek kilistázva.");
+        Console.WriteLine("A program most kiszortírozza a focistákat a góljaik és meccseik átlaga alapján.");
+        Console.WriteLine("Adj meg egy átlagot. Ez az átlag lesz a lekérdezés minimuma. Ez alatti átlagú játékosok nem lesznek kilistázva.");
         double felhasznaloAtlag = Convert.ToDouble( Console.ReadLine());
         foreach (var a in atlaglista)
         {
             if (a>felhasznaloAtlag)
             {
                 Console.WriteLine(focistak[atlaglista.IndexOf(a)].ToString());
-                Console.WriteLine(a);
             }
             
         }
@@ -176,10 +177,9 @@ internal class Program
 
         Console.WriteLine("Adj meg egy bizonyos gólmennyiséget: ");
         int megadottGolok = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Hány darab focistát szeretnél kiiratni?");
-        int focistadarab = Convert.ToInt32(Console.ReadLine());
+       
 
-        for (int i = 0;  i < focistadarab; i++)
+        for (int i = 0;  i < focistak.Count; i++)
         {
 
             if (focistak[i].Goals > megadottGolok)
@@ -187,11 +187,9 @@ internal class Program
                 Console.WriteLine($"{focistak[i].Firstname} {focistak[i].Lastname}");
             }
         }
-
-
-        foreach (var f in focistak)
-        {
-        }
+        Console.WriteLine();
+        Console.WriteLine("Ezek az emberek rúgtak ugyan annyi vagy több gólt mint amit megadtál.");
+        
 
 
 
@@ -202,7 +200,7 @@ internal class Program
     private static void jatekosSpecifikusSzures(List<Class_Object> focistak)
     {
         bool joanev = false;
-        Console.WriteLine("Add meg a játékos vezetéknevét a szűréshez majd a keresztnevét a szűréshez:");
+        Console.WriteLine("Add meg először a játékos vezetéknevét majd a keresztnevét a szűréshez:");
         Console.Write("Vezetéknév: ");
         string megadottCSnev = Console.ReadLine();
         Console.Write("Keresztnév: ");
@@ -220,28 +218,31 @@ internal class Program
         }
         if (joanev == false)
         {
-            Console.WriteLine("A név Nem szerepel az adatbázisban.");
+            Console.WriteLine("A név nem szerepel az adatbázisban.");
         }
     }
 
     private static void osszesJatekosKilistazasa(List<Class_Object> focistak)
     {
-        foreach (var f in focistak)
+        Console.WriteLine("Az első hány sort listázza ki a program. (Adj meg egy számot 0-2000 között)");
+        int mennyitlistazzonKi = Convert.ToInt32(Console.ReadLine());
+        for (int i = 0; i < mennyitlistazzonKi; i++)
         {
-            Console.WriteLine(f.ToString());
+            Console.WriteLine(focistak[i].ToString());
+            
         }
+        
+
     }
 
     private static void Dbcheck(string connectionString)
     {
-         AdatbazisCsatlakozas.DbConnectionCheck(connectionString);
     }
 
 
     private static void SelectFromTable(string tableName, string connectionString)
     {
         adatok = AdatbazisCsatlakozas.GetAllData(tableName, connectionString);
-        Console.WriteLine("Adatok sikeresen szinkronizálva az adatbázisból, átmeneti tárolóba");
     }
 
 
@@ -272,7 +273,7 @@ internal class Program
 
     private static void Beolvasas(ref List<List<string>> adatokcsv)
     {
-        adatokcsv = reader.FileRead("focistak.csv", 7, ';', true);
+        adatokcsv = reader.FileRead("../../../focistak.txt", 7, ';', true);
     }
 
     private static void Feltoltes(List<List<string>> adatokcsv)
