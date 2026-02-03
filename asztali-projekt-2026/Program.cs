@@ -24,12 +24,17 @@ internal class Program
 
 
         //kész
-        //oregek(focistak);
-        //golokAtlagaMeccsekreLebontva(focistak);
-        //osszesJatekosKilistazasa(focistak);
-        //jatekosSpecifikusSzures(focistak);
+        oregek(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
+        golokAtlagaMeccsekreLebontva(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
+        osszesJatekosKilistazasa(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
+        jatekosSpecifikusSzures(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
         kinekVanTooobbGolja(focistak);
-        //megadottSzazalekMegnyerve(focistak);
+        Console.WriteLine("-----------------------------------------------------------------");
+        megadottSzazalekMegnyerve(focistak);
 
 
         //test commit
@@ -99,7 +104,8 @@ internal class Program
 
         List<double> atlaglista = new List<double>();
         atlaglistaFeltoltes(focistak, ref atlaglista);
-        Console.WriteLine("Adj meg egy átlagot. Ez az átlag lessz a lekérdezés minimuma.");
+        Console.WriteLine("A program most kiszortírozza a focistákat a goljaik és meccsi átlaga alapján.");
+        Console.WriteLine("Adj meg egy átlagot. Ez az átlag lessz a lekérdezés minimuma. Ez alatti átlagú játékosok nem lesznek kilistázva.");
         double felhasznaloAtlag = Convert.ToDouble( Console.ReadLine());
         foreach (var a in atlaglista)
         {
@@ -132,7 +138,7 @@ internal class Program
 
     private static void megadottSzazalekMegnyerve(List<Class_Object> focistak)
     {
-        Console.WriteLine("Adj meg egy százalékot (0-100 között):");
+        Console.WriteLine("Adj meg egy számot 1 és 100 között. A program ki fogja listázni azokat a játékosokat akik a megadott számmmal (százalékban értelmezve) egyenlő vagy több alkalommal nyerték meg a meccseiket.");
         double szazalek = Convert.ToDouble(Console.ReadLine());
 
         if (szazalek < 0 || szazalek > 100)

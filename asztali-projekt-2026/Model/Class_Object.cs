@@ -45,7 +45,7 @@ namespace asztali_projekt_2026.Model
 
         public override string ToString()
         {
-            return $"Név: {Firstname}, {Lastname}, Meccsek: {Matches}, Gólok: {Goals}, Győzelmek: {Wins}, Kor: {Age}";
+            return $"Név: {Firstname} {Lastname}, Meccsek: {Matches}, Gólok: {Goals}, Győzelmek: {Wins}, Kor: {Age}";
         }
     }
 }
