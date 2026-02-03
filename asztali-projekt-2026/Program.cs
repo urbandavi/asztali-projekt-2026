@@ -15,7 +15,7 @@ internal class Program
         Dbcheck(connectionString);
         SelectFromTable("focistak", connectionString);
         AdatBetoltes(adatok);
-        Beolvasas(adatokcsv);
+        Beolvasas(ref adatokcsv);
         Feltoltes(adatokcsv);
 
         foreach (var f in focistak)
@@ -115,7 +115,7 @@ internal class Program
 
         List<double> atlaglista = new List<double>();
         atlaglistaFeltoltes(focistak, ref atlaglista);
-        Console.WriteLine("A program most kiszortírozza a focistákat a goljaik és meccsi átlaga alapján.");
+        Console.WriteLine("A program most kiszortírozza a focistákat a goljaik és meccsik átlaga alapján.");
         Console.WriteLine("Adj meg egy átlagot. Ez az átlag lessz a lekérdezés minimuma. Ez alatti átlagú játékosok nem lesznek kilistázva.");
         double felhasznaloAtlag = Convert.ToDouble( Console.ReadLine());
         foreach (var a in atlaglista)
@@ -270,7 +270,7 @@ internal class Program
     }
 
 
-    private static void Beolvasas(List<List<string>> adatokcsv)
+    private static void Beolvasas(ref List<List<string>> adatokcsv)
     {
         adatokcsv = reader.FileRead("focistak.csv", 7, ';', true);
     }
