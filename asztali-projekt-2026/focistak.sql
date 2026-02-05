@@ -1,3 +1,7 @@
+
+
+
+
 create table focistak (
 	id INT,
 	first_name VARCHAR(50),
